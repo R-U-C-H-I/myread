@@ -21,7 +21,7 @@ class BooksApp extends React.Component {
       })
       .catch(err => console.log(err));
   }
-  reloadBooks() {
+  setState() {
     if (window.confirm('Bookshelf updated do you want to reload?')) {
       window.location.reload()
     };
