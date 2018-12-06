@@ -42,7 +42,7 @@ class SearchPage extends Component {
     let shelf = event.target.value;
     BooksAPI.update(book, shelf)
       .then(() => {
-        //this.props.history.push("/");
+        this.props.history.push("/");
         window.location.reload();
       })
       .catch(err => console.log(`Error while adding book: ${err}`));
