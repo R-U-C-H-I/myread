@@ -1,12 +1,12 @@
 import React from "react";
 import * as BooksAPI from "./component/BooksAPI";
-import "./App.css";
 import WantToRead from "./component/WantToRead.js";
 import Read from "./component/Read.js";
 import CurrentlyReading from "./component/CurrentlyReading.js";
 import { Route } from "react-router-dom";
 import SearchPage from "./component/SearchPage.js";
 import { Link } from "react-router-dom";
+import "./App.css";
 
 class BooksApp extends React.Component {
   state = {
@@ -21,20 +21,21 @@ class BooksApp extends React.Component {
       })
       .catch(err => console.log(err));
   }
-  setStateBooks() {
+  reloadBooks() {
     if (window.confirm('Bookshelf updated do you want to reload?')) {
-      window.location.setState()
+      window.location.reload()
     };
   }
   updateDatabaseBookShelf(event, book) {
     BooksAPI.update(book, event.target.value).then(() => {
-        window.location.setState();
+        window.location.reload();
     }).catch(err => console.log(`Error occurred while changing shelf ${err}`));
   }
   
   render() {
     return this.state.isFetchSolved && (
       <div className="app">
+      <switch>
         <Route
           path="/"
           exact
@@ -56,6 +57,7 @@ class BooksApp extends React.Component {
                   handleSelection={this.updateDatabaseBookShelf}
                   books={this.state.books}
                 />
+      
               </div>
               <div className="open-search">
                 <Link to="/search">Add Book</Link>
@@ -63,6 +65,7 @@ class BooksApp extends React.Component {
             </div>
           )}
         />
+
         <Route
           clickHandler={(book, read) => {
             BooksAPI.update(book, read);
@@ -73,6 +76,7 @@ class BooksApp extends React.Component {
           component={SearchPage}
           library = {this.state.books}
         />
+            </switch>
       </div>
     )
   }
