@@ -16,7 +16,7 @@
 
 - To see this project download zip or clone it first.
 - Open terminal and navigate to the project folder.
-- Run this command `npm install` and after `npm` is installed run `npm start` to start the development server and go to this link to view it live [http://localhost:3000/](http://localhost:3000/).
+- Run this command `npm install` and after `npm` is installed run `npm start` to start the development server.
 
 ## How to use
 
