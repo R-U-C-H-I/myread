@@ -11,10 +11,10 @@ class SearchPage extends Component {
   };
   APICallHistory = null;
   fetchHistory = [];
-  storedBook = "none";
+  storedBook = "";
   getBooks = () => {
     clearTimeout(this.APICallHistory);
-    if (this.state.searchQuery !== "none") {
+    if (this.state.searchQuery !== "") {
       this.setState({ books: [] });
       this.APICallHistory = setTimeout(() => {
         this.fetchHistory.push(this.state.searchQuery);
@@ -43,7 +43,7 @@ class SearchPage extends Component {
     BooksAPI.update(book, shelf)
       .then(() => {
         this.props.history.push("/");
-        window.location.setState();
+        window.location.reload();
       })
       .catch(err => console.log(`Error while adding book: ${err}`));
   }
