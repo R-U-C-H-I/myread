@@ -21,14 +21,14 @@ class BooksApp extends React.Component {
       })
       .catch(err => console.log(err));
   }
-  setStateBooks() {
+  reloadBooks() {
     if (window.confirm('Bookshelf updated do you want to reload?')) {
-      window.location.setState()
+      window.location.reload()
     };
   }
   updateDatabaseBookShelf(event, book) {
     BooksAPI.update(book, event.target.value).then(() => {
-        window.location.setState();
+        window.location.reload();
     }).catch(err => console.log(`Error occurred while changing shelf ${err}`));
   }
   
